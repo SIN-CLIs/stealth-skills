@@ -2,34 +2,32 @@
   "skills": {
     "google-login": {
       "trigger": "google oauth login",
-      "cli": "cli/heypiggy-login",
-      "status": "active",
-      "last_verified": "2026-04-30",
-      "success_rate": 0.95
+      "cli": "platforms/heypiggy/google-login/cli/google-login",
+      "status": "active"
     },
     "heypiggy-survey": {
       "trigger": "starte umfrage",
-      "cli": "cli/heypiggy-survey-start",
+      "cli": "platforms/heypiggy/heypiggy-survey/cli/heypiggy-survey-start",
       "status": "active"
     },
     "recovery-overquota": {
       "trigger": "over quota",
-      "cli": "stealth-skills/modules/recovery-overquota/cli/recovery-overquota",
+      "cli": "platforms/heypiggy/modules/recovery-overquota/cli/recovery-overquota",
       "status": "active"
     },
     "recovery-attentioncheck": {
       "trigger": "attention check",
-      "cli": "stealth-skills/modules/recovery-attentioncheck/cli/recovery-attentioncheck",
+      "cli": "platforms/heypiggy/modules/recovery-attentioncheck/cli/recovery-attentioncheck",
       "status": "active"
     },
     "question-matrix": {
       "trigger": "matrix question",
-      "cli": "stealth-skills/modules/question-matrix/cli/question-matrix-solve",
+      "cli": "platforms/heypiggy/modules/question-matrix/cli/question-matrix-solve",
       "status": "active"
     },
     "router-detector": {
       "trigger": "unbekannte survey",
-      "cli": "stealth-skills/modules/router-detector/cli/router-detector",
+      "cli": "platforms/heypiggy/modules/router-detector/cli/router-detector",
       "status": "active"
     }
   },
