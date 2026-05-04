@@ -1,6 +1,6 @@
 # AGENTS.md — Stealth-Skills Agenten-Anleitung
 
-> **Private Skill Library** — Plattformspezifische Automatisierung für die Stealth-Quad.
+> **Private Skill Library** — Plattformspezifische Automatisierung für die Stealth Suite.
 > Enthält Betriebsgeheimnisse. NICHT öffentlich.
 
 ---
@@ -170,3 +170,6 @@ Routing-Detektor nutzen: `./modules/router-detector/cli/router-detector $PID`
 - `platforms/heypiggy/google-login/SKILL.md` — Google OAuth Flow
 - `platforms/heypiggy/heypiggy-survey/SKILL.md` — Survey-Ablauf
 - `platforms/heypiggy/modules/*/SKILL.md` — Modul-spezifisch
+## Captcha Solving (2026-05-03)
+Simple Text Captcha gelöst via NVIDIA Reasoning Extraktion + Playwright
+Siehe: ~/dev/skills/opencode-captcha-simple-text-skill/SKILL.md

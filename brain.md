@@ -89,3 +89,6 @@ NIE `bash` mit `&` — das blockiert den shell.
 ## SEMGREP RULES (in stealth-runner active)
 Alle Skills laufen im stealth-runner Kontext, wo 11 semgrep Regeln BANNED Muster blockieren.
 Keine Recovery-Module starten wenn nicht nötig — lieber Vision fragen.
+## Captcha Solving (2026-05-03)
+Simple Text Captcha gelöst via NVIDIA Reasoning Extraktion + Playwright
+Siehe: ~/dev/skills/opencode-captcha-simple-text-skill/SKILL.md

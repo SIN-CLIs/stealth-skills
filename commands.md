@@ -123,3 +123,6 @@ graphify update ~/dev/stealth-skills
 ```bash
 python3 ~/dev/stealth-runner/runner/doctor_cli.py
 ```
+## Captcha Solving (2026-05-03)
+Simple Text Captcha gelöst via NVIDIA Reasoning Extraktion + Playwright
+Siehe: ~/dev/skills/opencode-captcha-simple-text-skill/SKILL.md

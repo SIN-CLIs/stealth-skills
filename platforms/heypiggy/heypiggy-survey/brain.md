@@ -19,7 +19,7 @@ Schreibt: Facts, Mistakes, Pattern-Erkenntnisse zurück.
 
 ## Worker-Integration
 Der A2A-SIN-Worker-heypiggy teilt denselben Brain. Er schreibt Fangfragen-Muster, Panel-Routing, DQ-Phrasen.
-Die Stealth-Quad LIEST diese Erkenntnisse ohne selbst Vision-LLM auszuführen.
+Die Stealth Suite LIEST diese Erkenntnisse ohne selbst Vision-LLM auszuführen.
 
 ## Screening-Modi
 | Modus | Wann |

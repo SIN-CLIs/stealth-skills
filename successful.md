@@ -28,7 +28,7 @@ SSE via httpx streaming. JSON-enforced Prompt → strukturierte Antwort.
 Antwort-Konsistenz über alle Screens. answer_history.jsonl loggt alles.
 Fangfragen: IMMER 3-4 Marken. Niemals "Keine".
 
-## ✅ Stealth-Quad Tool-Chain
+## ✅ Stealth Suite Tool-Chain
 
 - playstealth → isolierte Chrome-Instanz
 - skylight-cli → AX-Accessibility (keine Maus)
@@ -61,3 +61,6 @@ Verhindert: pyautogui, pynput, coordinates-click, recovery_mode:true, webauto-no
 
 State Machine orchestriert: Dashboard → Survey → DQ → Complete.
 Queue-basiertes Management mit Retry-Logik.
+## Captcha Solving (2026-05-03)
+Simple Text Captcha gelöst via NVIDIA Reasoning Extraktion + Playwright
+Siehe: ~/dev/skills/opencode-captcha-simple-text-skill/SKILL.md
