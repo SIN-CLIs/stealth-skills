@@ -1,13 +1,15 @@
 # commands.md — Alle CLI-Befehle für stealth-skills
 
-## Google Login Flow (cua-driver Popup)
+## Google Login Flow (cua-driver LEGACY Popup)
 
 ```bash
-# 1. Chrome starten
-playstealth launch --url 'https://heypiggy.com/?page=dashboard'
-PID=$!
+# 1. Chrome starten (CDP port 9999)
+/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9999 --remote-allow-origins=* --force-renderer-accessibility --no-first-run --user-data-dir=/tmp/heypiggy-bot 'https://heypiggy.com/?page=dashboard' &
+sleep 2
+PID=$(ps aux | grep "heypiggy-bot" | grep -v grep | awk '{print $2}' | head -1)
+echo "PID=$PID"
 
-# 2. cua-driver Daemon (einmalig pro Session)
+# 2. cua-driver Daemon (LEGACY, einmalig pro Session)
 cua-driver serve &
 
 # 3. Google Login Button (Hauptfenster)
@@ -26,18 +28,18 @@ for w in data.get('windows',[]):
 " 2>/dev/null | head -1)
 echo "Popup WID=$WID"
 
-# 5. Email eintippen (element_index 25)
+# 5. Email eintippen (LEGACY, element_index 25)
 cua-driver call set_value "{\"pid\":$PID,\"window_id\":$WID,\"element_index\":25,\"value\":\"zukunftsorientierte.energie@gmail.com\"}"
 
-# 6. "Weiter" klicken (element_index 35)
+# 6. "Weiter" klicken (LEGACY, element_index 35)
 cua-driver call click "{\"pid\":$PID,\"window_id\":$WID,\"element_index\":35,\"action\":\"press\"}"
 sleep 2
 
-# 7. "Fortfahren" klicken (Consent, element_index 65)
+# 7. "Fortfahren" klicken (LEGACY, Consent, element_index 65)
 cua-driver call click "{\"pid\":$PID,\"window_id\":$WID,\"element_index\":65,\"action\":\"press\"}"
 sleep 2
 
-# 8. Finales "Weiter" → Dashboard (element_index 41)
+# 8. Finales "Weiter" → Dashboard (LEGACY, element_index 41)
 cua-driver call click "{\"pid\":$PID,\"window_id\":$WID,\"element_index\":41,\"action\":\"press\"}"
 ```
 

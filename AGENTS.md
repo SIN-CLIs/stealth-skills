@@ -9,7 +9,7 @@
 
 ```
 platforms/heypiggy/
-├── google-login/      → Google OAuth Login (cua-driver Popup)
+├── google-login/      → Google OAuth Login (cua-driver LEGACY Popup)
 ├── heypiggy-survey/   → Dashboard → Survey → EUR
 └── modules/           → 8 spezialisierte Sub-Skills
     ├── router-detector
@@ -40,9 +40,9 @@ platforms/heypiggy/
 
 | Tool | Wann | Command |
 |------|------|---------|
-| `playstealth` | Chrome starten | `playstealth launch --url 'https://heypiggy.com/?page=dashboard'` |
-| `skylight-cli` | **Hauptfenster** interagieren | `skylight-cli click --pid X --element-index Y` |
-| `cua-driver` | **Popups** interagieren | `cua-driver call click '{"pid":X,"window_id":W,"element_index":N}'` |
+| Chrome (CDP) | Chrome starten | `/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9999 --remote-allow-origins=* --force-renderer-accessibility --no-first-run --user-data-dir=/tmp/heypiggy-bot 'https://heypiggy.com/?page=dashboard'` |
+| `skylight-cli` (RE-ACTIVATED) | **snapshot-compact + batch** | `skylight-cli snapshot-compact --pid X --semantic` / `skylight-cli batch '[{"ref":"@e0","action":"click"}]'` |
+| `cua-driver` (LEGACY) | **Popups** interagieren | `cua-driver call click '{"pid":X,"window_id":W,"element_index":N}'` |
 | `screen-follow` | Video aufnehmen | `screen-follow record --video --output /tmp/session.mp4` |
 
 ### NIE DIESE TOOLS (BANNED)
@@ -50,10 +50,10 @@ platforms/heypiggy/
 - ❌ `pyautogui` — Mausbewegung verboten
 - ❌ `pynput` — Tastatur-Emulation verboten
 - ❌ `open -na "Google Chrome"` — Nutzer-Chrome manipulieren
-- ❌ `playstealth launch (isolierte PID)` — falsches Pattern
+- ❌ `skylight-cli click --element-index` — BANNED (nutze `skylight-cli batch` stattdessen)
 - ❌ `skylight-cli click --x --y` — Koordinaten raten verboten
 - ❌ `webauto-nodriver-mcp` — BANNED Stack
-- ❌ skylight-cli in **Popups** — falsches Fenster!
+- ❌ skylight-cli click in **Popups** — falsches Fenster! Nutze cua-driver (LEGACY) oder batch
 
 ---
 
@@ -61,13 +61,14 @@ platforms/heypiggy/
 
 ### Schritt 1: Chrome starten
 ```bash
-playstealth launch --url 'https://heypiggy.com/?page=dashboard'
-# → {"pid": 12345, "status": "ok"}
+/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9999 --remote-allow-origins=* --force-renderer-accessibility --no-first-run --user-data-dir=/tmp/heypiggy-bot 'https://heypiggy.com/?page=dashboard'
+# → PID via ps aux | grep "heypiggy-bot" | grep -v grep
 ```
 
-### Schritt 2: Google Login (cua-driver für Popup!)
+### Schritt 2: Google Login (cua-driver LEGACY für Popup!)
 ```bash
 PID=<CHROME_PID>
+# cua-driver Daemon (LEGACY)
 cua-driver serve &
 
 # Google Login Button (Hauptfenster via skylight)
@@ -155,9 +156,9 @@ Routing-Detektor nutzen: `./modules/router-detector/cli/router-detector $PID`
 ## ⚠️ GOLDEN RULES
 
 1. **NIE** ohne Vision-Prompt klicken
-2. **NIEMALS** Koordinaten raten — immer `--element-index`
-3. **IMMER** cua-driver für Popups (Google OAuth, Consent)
-4. **IMMER** skylight-cli für Hauptfenster
+2. **NIEMALS** Koordinaten raten — immer `--element-index` (skylight-cli) oder @eN refs (batch)
+3. **IMMER** cua-driver (LEGACY) für Popups (Google OAuth, Consent)
+4. **IMMER** skylight-cli snapshot-compact + batch für Survey-Seiten (PRIMARY)
 5. **NIE** Recovery-Module ohne FAIL-Status starten
 6. **IMMER** Video aufnehmen (screen-follow) für Post-Mortem
 

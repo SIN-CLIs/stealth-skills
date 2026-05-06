@@ -2,9 +2,9 @@
 
 ## 🔑 KRITISCH: Tool-Rollen-Trennung
 
-**skylight-cli** operiert NUR auf dem HAUPTFENSTER. Popup-Indices von `skylight-cli list-elements` sind INVALID für Popup-Content.
+**skylight-cli (RE-ACTIVATED)**: `snapshot-compact` + `batch` für Survey-Seiten (PRIMARY). `click --element-index` ist DEPRECATED.**
 
-**cua-driver** ist das einzige Tool für Popup-Interaktion (Google OAuth, Consent-Dialoge):
+**cua-driver (LEGACY)** für Popup-Interaktion (Google OAuth, Consent-Dialoge):
 
 ```bash
 # Popup Window-ID finden
@@ -20,6 +20,9 @@ cua-driver call set_value '{"pid":PID,"window_id":WID,"element_index":N,"value":
 
 **cua-driver Daemon MUSS laufen**: `cua-driver serve &` vor allen Popup-Interaktionen.
 Ohne Daemon: "No cached AX state" → Klick schlägt fehl.
+
+**NEMO ist PRIMARY**: Für Survey-Seiten `skylight-cli snapshot-compact` + `src/stealth_survey/` nutzen.
+cua-driver ist LEGACY Fallback für Popups/Sheets.
 
 ## AKTIVES MODELL
 - **Name**: `nvidia/nemotron-3-nano-omni-30b-a3b-reasoning`
@@ -54,13 +57,13 @@ Frame-Differencing: statische Frames (MSE < 2.0) werden übersprungen → 95% Pa
 `live_omni_monitor.py`: `quality=40` → 90% Payload-Reduktion.
 Thumbnail vor API-Call: 1200×1006 → 960×805 (~67KB statt 300KB).
 
-## GOOGLE OAUTH FLOW (cua-driver)
+## GOOGLE OAUTH FLOW (cua-driver LEGACY)
 1. Skylight: Klick auf Google-Login-Button (Hauptfenster)
-2. cua-driver: Popup window_id finden
-3. cua-driver: Email eintippen (element_index 25)
-4. cua-driver: "Weiter" klicken (element_index 35)
-5. cua-driver: "Fortfahren" klicken (element_index 65) — Consent
-6. cua-driver: Finales "Weiter" (element_index 41) → Dashboard
+2. cua-driver (LEGACY): Popup window_id finden
+3. cua-driver (LEGACY): Email eintippen (element_index 25)
+4. cua-driver (LEGACY): "Weiter" klicken (element_index 35)
+5. cua-driver (LEGACY): "Fortfahren" klicken (element_index 65) — Consent
+6. cua-driver (LEGACY): Finales "Weiter" (element_index 41) → Dashboard
 
 Bei bestehenden Google-Cookies: KEIN Passwort nötig!
 

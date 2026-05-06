@@ -9,7 +9,7 @@
 
 **FALSCH**: `skylight-cli list-elements --pid X` im Google OAuth Popup.
 **PROBLEM**: skylight-cli cached NUR das Hauptfenster. Popup-Indices sind INVALID.
-**RICHTIG**: `cua-driver call get_window_state '{"pid":X,"window_id":W}'` für Popups.
+**RICHTIG**: `cua-driver call get_window_state '{"pid":X,"window_id":W}'` (LEGACY) für Popups. Besser: `skylight-cli batch` für Survey-Seiten.
 
 ## ❌ Koordinaten raten (--x --y)
 
@@ -47,12 +47,12 @@
 
 ## ❌ webauto-nodriver-mcp nutzen
 
-BANNED Stack. Nutze skylight-cli + cua-driver + playstealth.
+BANNED Stack. Nutze skylight-cli (RE-ACTIVATED: snapshot-compact + batch) + cua-driver (LEGACY) + Chrome (CDP).
 
 ## ❌ User-Chrome manipulieren
 
 `open -na "Google Chrome"` manipuliert den Browser des Nutzers.
-Nur `playstealth launch` (isolierte Chrome-Instanz).
+Nur Chrome mit `--remote-debugging-port=9999 --remote-allow-origins=* --force-renderer-accessibility --user-data-dir=/tmp/heypiggy-bot` (isolierte Chrome-Instanz).
 
 ## ❌ Nur klicken, keine Textfelder beachten
 

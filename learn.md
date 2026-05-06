@@ -26,11 +26,11 @@ Reasoning braucht Tokens zum Denken. JSON kommt ERST danach.
 AXWebArea-Label zeigt Seitentitel: "HeyPiggy" vs "PureSpectrum" vs "Google".
 In state speichern → an prompt übergeben → Model passt sich an.
 
-## 🔑 cua-driver für Popups, skylight für Hauptfenster
+## 🔑 cua-driver (LEGACY) für Popups, skylight-cli batch für Hauptfenster
 
-Popup = `cua-driver call click "{...\"window_id\":WID,...}"`
-Hauptfenster = `skylight-cli click --pid X --element-index Y`
-NIE mischen! skylight-cli sieht KEINE Popup-Elemente.
+Popup = `cua-driver call click "{...\"window_id\":WID,...}"` (LEGACY)
+Survey-Seiten = `skylight-cli snapshot-compact --pid X --semantic` + `skylight-cli batch '[{"ref":"@e0","action":"click"}]'` (PRIMARY)
+NIE mischen! skylight-cli sees KEINE Popup-Elemente.
 
 ## 🔑 Fangfragen: IMMER 3-4 Marken, NIEMALS "Keine"!
 

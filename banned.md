@@ -6,9 +6,9 @@
 |------|-------|-------------|
 | `pyautogui` | Mausbewegung = Detection | `skylight-cli click --element-index` |
 | `pynput` | Tastatur-Emulation = Detection | `skylight-cli type --element-index` |
-| `open -na "Google Chrome"` | Manipuliert User-Chrome | `playstealth launch` (isolierte Instanz) |
-| `playstealth launch (isolierte PID)` | Falsches Pattern | `playstealth launch --url` |
-| `webauto-nodriver-mcp` | Veralteter Stack | skylight-cli + cua-driver |
+| `open -na "Google Chrome"` | Manipuliert User-Chrome | Chrome mit `--remote-debugging-port=9999` (isolierte Instanz) |
+| `playstealth launch` | DEPRECATED | Chrome mit `--remote-debugging-port=9999 --remote-allow-origins=* --force-renderer-accessibility --user-data-dir=/tmp/heypiggy-bot` |
+| `webauto-nodriver-mcp` | Veralteter Stack | skylight-cli (RE-ACTIVATED: snapshot-compact + batch) + cua-driver (LEGACY) |
 | `openai.OpenAI()` | Wrong API | `httpx` an NVIDIA NIM |
 | `recovery_mode: true` | Semgrep blockiert | Recovery-Module in stealth-skills |
 
@@ -46,7 +46,7 @@ command &  # blockiert shell!
 # ✅ Koordinaten NIE — immer element-index
 skylight-cli click --pid X --element-index Y
 
-# ✅ Popups via cua-driver
+# ✅ Popups via cua-driver (LEGACY)
 cua-driver call click '{"pid":X,"window_id":W,"element_index":Y}'
 
 # ✅ Vision-Prompt VOR jedem Klick

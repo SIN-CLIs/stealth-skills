@@ -1,6 +1,6 @@
 # fix.md — Bekannte Bugs & Fixes
 
-## 🔧 Fix: "No cached AX state" (cua-driver)
+## 🔧 Fix: "No cached AX state" (cua-driver LEGACY)
 
 **Problem**: cua-driver Klick fehlschlägt mit "No cached AX state".
 **Ursache**: `cua-driver serve` läuft nicht oder Popup noch nicht geladen.

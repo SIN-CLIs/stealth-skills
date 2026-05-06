@@ -1,14 +1,14 @@
 # successful.md — Was funktioniert (2026-05-02)
 
-## ✅ Google OAuth Login (cua-driver Popup)
+## ✅ Google OAuth Login (cua-driver LEGACY Popup)
 
 Komplett verifiziert mit PID 31710. Flow:
 1. Skylight: Google-Login-Button klicken (--element-index 33)
-2. cua-driver: Popup window_id finden (list_windows)
-3. cua-driver: Email eintippen (element_index 25, set_value)
-4. cua-driver: "Weiter" (element_index 35)
-5. cua-driver: "Fortfahren" Consent (element_index 65)
-6. cua-driver: Finales "Weiter" (element_index 41) → Dashboard
+2. cua-driver (LEGACY): Popup window_id finden (list_windows)
+3. cua-driver (LEGACY): Email eintippen (element_index 25, set_value)
+4. cua-driver (LEGACY): "Weiter" (element_index 35)
+5. cua-driver (LEGACY): "Fortfahren" Consent (element_index 65)
+6. cua-driver (LEGACY): Finales "Weiter" (element_index 41) → Dashboard
 
 **0 Passwort nötig** dank bestehender Google-Cookies.
 
@@ -30,10 +30,10 @@ Fangfragen: IMMER 3-4 Marken. Niemals "Keine".
 
 ## ✅ Stealth Suite Tool-Chain
 
-- playstealth → isolierte Chrome-Instanz
-- skylight-cli → AX-Accessibility (keine Maus)
-- cua-driver → Popup-Interaktion (window_id targetiert)
-- screen-follow → Video-Aufzeichnung
+- Chrome (CDP) — isolierte Chrome-Instanz via `--remote-debugging-port=9999`
+- skylight-cli (RE-ACTIVATED) — snapshot-compact + batch (kein Index!)
+- cua-driver (LEGACY) — Popup-Interaktion (window_id targetiert)
+- screen-follow — Video-Aufzeichnung
 
 Keine Koordinaten. Keine Maus. Kein User-Chrome.
 
