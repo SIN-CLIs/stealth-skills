@@ -1,11 +1,13 @@
-# AGENTS.md — Stealth-Skills Agenten-Anleitung
+---
+content: |
+# AGENTS.md - Stealth-Skills Agenten-Anleitung
 
-> **Private Skill Library** — Plattformspezifische Automatisierung für die Stealth Suite.
+> **Private Skill Library** - Plattformspezifische Automatisierung für die Stealth Suite.
 > Enthält Betriebsgeheimnisse. NICHT öffentlich.
 
 ---
 
-## 🎯 WAS IST stealth-skills?
+##  WAS IST stealth-skills?
 
 ```
 platforms/heypiggy/
@@ -24,7 +26,7 @@ platforms/heypiggy/
 
 ---
 
-## 🔑 AKTIVES MODELL (NVIDIA NIM)
+##  AKTIVES MODELL (NVIDIA NIM)
 
 - **Model**: `nvidia/nemotron-3-nano-omni-30b-a3b-reasoning`
 - **API**: `POST https://integrate.api.nvidia.com/v1/chat/completions`
@@ -34,7 +36,7 @@ platforms/heypiggy/
 
 ---
 
-## 🛠️ TOOL-CHAIN (STRIKT BEACHTEN!)
+## ️ TOOL-CHAIN (STRIKT BEACHTEN!)
 
 ### Tool-Rollen (KRITISCH!)
 
@@ -47,17 +49,17 @@ platforms/heypiggy/
 
 ### NIE DIESE TOOLS (BANNED)
 
-- ❌ `pyautogui` — Mausbewegung verboten
-- ❌ `pynput` — Tastatur-Emulation verboten
-- ❌ `open -na "Google Chrome"` — Nutzer-Chrome manipulieren
-- ❌ `playstealth launch (isolierte PID)` — falsches Pattern
-- ❌ `skylight-cli click --x --y` — Koordinaten raten verboten
-- ❌ `webauto-nodriver-mcp` — BANNED Stack
-- ❌ skylight-cli in **Popups** — falsches Fenster!
+-  `pyautogui` - Mausbewegung verboten
+-  `pynput` - Tastatur-Emulation verboten
+-  `open -na "Google Chrome"` - Nutzer-Chrome manipulieren
+-  `playstealth launch (isolierte PID)` - falsches Pattern
+-  `skylight-cli click --x --y` - Koordinaten raten verboten
+-  `webauto-nodriver-mcp` - BANNED Stack
+-  skylight-cli in **Popups** - falsches Fenster!
 
 ---
 
-## 📋 HEYPIGGY SURVEY WORKFLOW
+##  HEYPIGGY SURVEY WORKFLOW
 
 ### Schritt 1: Chrome starten
 ```bash
@@ -139,7 +141,7 @@ Kein SKILL.md = nicht nutzen. Immer zuerst SKILL.md lesen.
 
 ---
 
-## 🔄 PANEL-SPECIFIC ROUTING
+##  PANEL-SPECIFIC ROUTING
 
 | Panel | Erkennung | Specific |
 |-------|-----------|----------|
@@ -152,10 +154,10 @@ Routing-Detektor nutzen: `./modules/router-detector/cli/router-detector $PID`
 
 ---
 
-## ⚠️ GOLDEN RULES
+## ️ GOLDEN RULES
 
 1. **NIE** ohne Vision-Prompt klicken
-2. **NIEMALS** Koordinaten raten — immer `--element-index`
+2. **NIEMALS** Koordinaten raten - immer `--element-index`
 3. **IMMER** cua-driver für Popups (Google OAuth, Consent)
 4. **IMMER** skylight-cli für Hauptfenster
 5. **NIE** Recovery-Module ohne FAIL-Status starten
@@ -163,13 +165,13 @@ Routing-Detektor nutzen: `./modules/router-detector/cli/router-detector $PID`
 
 ---
 
-## 📚 VERWANDTE DOKUMENTATION
+##  VERWANDTE DOKUMENTATION
 
-- `brain.md` — Systemwissen & Architektur-Entscheidungen
-- `commands.md` — Alle CLI-Befehle im Detail
-- `platforms/heypiggy/google-login/SKILL.md` — Google OAuth Flow
-- `platforms/heypiggy/heypiggy-survey/SKILL.md` — Survey-Ablauf
-- `platforms/heypiggy/modules/*/SKILL.md` — Modul-spezifisch
+- `brain.md` - Systemwissen & Architektur-Entscheidungen
+- `commands.md` - Alle CLI-Befehle im Detail
+- `platforms/heypiggy/google-login/SKILL.md` - Google OAuth Flow
+- `platforms/heypiggy/heypiggy-survey/SKILL.md` - Survey-Ablauf
+- `platforms/heypiggy/modules/*/SKILL.md` - Modul-spezifisch
 ## Captcha Solving (2026-05-03)
 Simple Text Captcha gelöst via NVIDIA Reasoning Extraktion + Playwright
 Siehe: ~/dev/skills/opencode-captcha-simple-text-skill/SKILL.md
